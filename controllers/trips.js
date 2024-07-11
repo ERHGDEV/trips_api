@@ -2,7 +2,7 @@ const tripsRouter = require('express').Router()
 const Trip = require('../models/trip')
 
 tripsRouter.get( '/', ( req, res ) => {
-    res.send( '<p>api para el registro de viajes de operadores.<br/><br/> Intenta con la ruta /api/trips</p>' )
+    res.send( '<p>Hola! esto es una api para el registro de viajes de operadores.<br/><br/> Intenta con la ruta /api/trips</p>' )
 })
 
 //Trae todos los viajes
