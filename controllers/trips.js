@@ -1,15 +1,19 @@
 const tripsRouter = require('express').Router()
 const Trip = require('../models/trip')
 
-//Trae todos los viajes
 tripsRouter.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+//Trae todos los viajes
+tripsRouter.get('/api/trips', (req, res) => {
     Trip.find({}).then(trips => {
         res.json(trips)
     })
 })
 
 //Trae UN viaje
-tripsRouter.get('/:id', (req, res, next) => {
+tripsRouter.get('/api/trips/:id', (req, res, next) => {
     Trip.findById(req.params.id)
         .then(trip => {
             if (trip) {
@@ -22,7 +26,7 @@ tripsRouter.get('/:id', (req, res, next) => {
 })
 
 //Agregar viaje
-tripsRouter.post('/', (req, res, next) => {
+tripsRouter.post('/api/trips', (req, res, next) => {
     const body = req.body
 
     if (
@@ -64,7 +68,7 @@ tripsRouter.post('/', (req, res, next) => {
 }) 
 
 //Actualizar viaje
-tripsRouter.put('/:id', (req, res, next) => {
+tripsRouter.put('/api/trips/:id', (req, res, next) => {
     const { 
         operador, 
         tipoOperador, 
@@ -103,7 +107,7 @@ tripsRouter.put('/:id', (req, res, next) => {
 })
 
 //Eliminar viaje
-tripsRouter.delete('/:id', (req, res, next) => {
+tripsRouter.delete('/api/trips/:id', (req, res, next) => {
     Trip.findByIdAndDelete(req.params.id)
         .then(result => {
             res.status(204).end()

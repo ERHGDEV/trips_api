@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const cors = require('cors')
 const mongoose = require('mongoose')
 
@@ -22,11 +23,11 @@ mongoose.connect(config.MONGODBURL)
     })
 
 app.use(cors())
-app.use( '/', express.static( 'dist' ) )
+app.use( express.static(path.join( __dirname, 'dist' )))
 app.use( express.json() )
 app.use( middleware.requestLogger )
 
-app.use( '/api/trips', tripsRouter )
+app.use( '/', tripsRouter )
 
 app.use( middleware.unknownEndpoint )
 app.use( middleware.errorHandler )
