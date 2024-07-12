@@ -93,3 +93,8 @@ MONGODBURL=https://urlDeLaBaseDeDatos
 ## 🔑 Licencia
 
 Este proyecto está bajo la Licencia MIT.
+
+## Pendientes
+
+- Autenticación / Autorización
+
