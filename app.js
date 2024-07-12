@@ -26,7 +26,7 @@ app.use( express.static( 'dist' ) )
 app.use( express.json() )
 app.use( middleware.requestLogger )
 
-app.use( '/', tripsRouter )
+app.use( '/api/trips', tripsRouter )
 
 app.use( middleware.unknownEndpoint )
 app.use( middleware.errorHandler )
